@@ -11,6 +11,27 @@ cursor.execute("""
     )
 """)
 
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS daily_prices (
+        id INTEGER PRIMARY KEY,
+        ticker TEXT NOT NULL,
+        date TEXT NOT NULL,
+        open REAL,
+        close REAL,
+        high REAL,
+        low REAL,
+        volume INTEGER
+    )
+""")
+
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS alerts (
+        id INTEGER PRIMARY KEY,
+        type TEXT NOT NULL,
+        message TEXT,
+        date TEXT NOT NULL
+    )
+""")
 conn.commit()
 conn.close()
 
