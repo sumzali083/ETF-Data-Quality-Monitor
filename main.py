@@ -20,4 +20,6 @@ for date, row in price_data.iterrows():
               int(row["Volume"])))
 conn.commit()
 conn.close()
+
+
 print("Data inserted into database!")
