@@ -1,8 +1,6 @@
 import yfinance as yf
 import sqlite3
-import streamlit as st
-st.write("This is a simple ETF monitoring app that fetches data from Yahoo Finance and stores it in a SQLite database. The app will display the latest price data for a list of ETFs.")
-st.title("ETF Monitor")
+
 conn = sqlite3.connect("etf_monitor.db")
 cursor = conn.cursor()
 
@@ -23,9 +21,3 @@ for date, row in price_data.iterrows():
 conn.commit()
 conn.close()
 print("Data inserted into database!")
-
-
-st.dataframe(price_data)
-st.write("Data for the last 3 months has been fetched and stored in the database. You can view the data in the table above.")
-st.line_chart(price_data["Close"])
-st.write("The line chart above shows the closing price of the ETF over the last 3 months.")
